@@ -1,0 +1,252 @@
+{
+  "message": "success",
+  "page": 1,
+  "total_page": 10,
+  "total_item": 25,
+  "data": [
+    {
+      "id": 1,
+      "type": "fruits",
+      "name": "Blueberries",
+      "price": 8,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 5231,
+      "description": "These fresh blueberries are sourced from the best farms to ensure a burst of flavor in every bite. Rich in antioxidants, they're perfect for your morning smoothies, desserts, or simply as a healthy snack. Their deep, vibrant color is an indication of their ripeness, making them ideal for your dietary needs. Whether eaten fresh, used in baking, or blended into a sauce, these blueberries are versatile and delicious. Packed with nutrients, they’re an excellent choice for boosting your immune system and are naturally low in calories. Freshness guaranteed on delivery.",
+      "delivery_time": "20-25 minutes"
+    },
+    {
+      "id": 2,
+      "type": "vegetables",
+      "name": "Spinach",
+      "price": 4,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3425,
+      "description": "Our organic spinach is crisp, fresh, and ready to be a part of your next meal. Grown without pesticides, this leafy green vegetable is packed with essential vitamins and minerals such as iron, calcium, and fiber. It’s perfect for salads, smoothies, or sautéed as a side dish. Known for its high nutrient density, spinach is a great choice for anyone looking to maintain a healthy diet. It can be used in a wide variety of dishes, from simple stir-fries to complex gourmet recipes.",
+      "delivery_time": "25-30 minutes"
+    },
+    {
+      "id": 3,
+      "type": "dairy_products",
+      "name": "Cheddar Cheese",
+      "price": 7,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 5987,
+      "description": "Aged to perfection, this sharp cheddar cheese is crafted from high-quality milk and offers a rich, tangy flavor. Perfect for sandwiches, cheese boards, or melted over your favorite dishes, our cheddar is versatile and satisfying. It’s a great source of calcium and protein, making it a delicious yet healthy addition to any meal. Whether you’re adding it to a burger or pairing it with crackers and wine, this cheddar will elevate your culinary experience. It is freshly packed and delivered straight to your door.",
+      "delivery_time": "15-20 minutes"
+    },
+    {
+      "id": 4,
+      "type": "fruits",
+      "name": "Pineapple",
+      "price": 9,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 4123,
+      "description": "Our pineapples are sweet, juicy, and full of tropical flavor. Handpicked for their freshness and ripeness, they are perfect for snacking, grilling, or adding to your favorite tropical drinks. The balance between sweetness and acidity makes it a versatile fruit that can be used in both sweet and savory dishes. Slice it up for a refreshing treat, blend it into smoothies, or even use it as a pizza topping! Rich in Vitamin C, pineapples support the immune system and promote healthy digestion.",
+      "delivery_time": "30-35 minutes"
+    },
+    {
+      "id": 5,
+      "type": "vegetables",
+      "name": "Broccoli",
+      "price": 5,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 2541,
+      "description": "Freshly harvested broccoli packed with nutrients. Ideal for steaming, roasting, or adding to salads and stir-fries. Rich in fiber and vitamins C and K, making it a great addition to any healthy meal."
+    },
+    {
+      "id": 6,
+      "type": "dairy_products",
+      "name": "Greek Yogurt",
+      "price": 6,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3012,
+      "description": "Creamy, thick, and tangy Greek yogurt made from high-quality milk. Perfect for breakfast bowls, smoothies, or as a snack. Rich in probiotics, calcium, and protein, it supports gut health and promotes muscle recovery."
+    },
+    {
+      "id": 7,
+      "type": "fruits",
+      "name": "Strawberries",
+      "price": 7,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 6234,
+      "description": "Juicy and sweet strawberries perfect for snacking, desserts, or smoothies. Rich in antioxidants and Vitamin C, they boost immunity and skin health. Picked fresh and delivered to your doorstep for maximum freshness."
+    },
+    {
+      "id": 8,
+      "type": "vegetables",
+      "name": "Bell Peppers",
+      "price": 4,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 1876,
+      "description": "Crisp and colorful bell peppers that are perfect for salads, grilling, and stir-fries. Packed with Vitamin C, they add a sweet crunch to any meal. Available in a variety of colors including red, yellow, and green."
+    },
+    {
+      "id": 9,
+      "type": "dairy_products",
+      "name": "Butter",
+      "price": 5,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 2987,
+      "description": "Rich and creamy butter made from 100% pure cream. Perfect for baking, spreading, and cooking. It adds a luxurious flavor to your meals and is an excellent source of fat-soluble vitamins like Vitamin A."
+    },
+    {
+      "id": 10,
+      "type": "fruits",
+      "name": "Mangoes",
+      "price": 8,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 4576,
+      "description": "Sweet and juicy mangoes sourced from tropical regions. Perfect for desserts, smoothies, or eaten on their own. Packed with Vitamin A and fiber, they promote good digestion and support healthy skin."
+    },
+    {
+      "id": 11,
+      "type": "vegetables",
+      "name": "Cucumbers",
+      "price": 3,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 2145,
+      "description": "Cool and refreshing cucumbers, perfect for salads, sandwiches, or snacking. Low in calories and high in hydration, they are a great addition to your healthy diet. Rich in antioxidants and support skin health."
+    },
+    {
+      "id": 12,
+      "type": "dairy_products",
+      "name": "Cottage Cheese",
+      "price": 5,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3123,
+      "description": "Soft and creamy cottage cheese made from fresh milk. High in protein and low in fat, it's perfect for a light snack or added to savory dishes. Ideal for fitness enthusiasts and those looking to increase their protein intake."
+    },
+    {
+      "id": 13,
+      "type": "fruits",
+      "name": "Bananas",
+      "price": 3,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 6743,
+      "description": "Sweet and nutritious bananas that are perfect for snacking, baking, or adding to smoothies. Rich in potassium and Vitamin B6, they provide an instant energy boost and support heart health."
+    },
+    {
+      "id": 14,
+      "type": "vegetables",
+      "name": "Tomatoes",
+      "price": 4,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 1982,
+      "description": "Vibrant red tomatoes, freshly picked and full of flavor. Perfect for salads, sauces, and sandwiches. Packed with lycopene, they offer powerful antioxidant properties and are great for promoting skin health."
+    },
+    {
+      "id": 15,
+      "type": "fruits",
+      "name": "Peaches",
+      "price": 6,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3678,
+      "description": "Juicy, ripe peaches that are bursting with flavor. These peaches are perfect for snacking, baking into pies, or adding to smoothies. High in vitamins A and C, they also contain antioxidants that support overall health. Enjoy their soft texture and sweet taste with every bite."
+    },
+    {
+      "id": 16,
+      "type": "vegetables",
+      "name": "Zucchini",
+      "price": 4,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 2451,
+      "description": "Fresh zucchini perfect for grilling, roasting, or adding to stir-fries. Low in calories and high in vitamins and minerals, zucchini is a versatile vegetable that fits into any diet. Its mild flavor and soft texture make it a great addition to both savory and sweet dishes."
+    },
+    {
+      "id": 17,
+      "type": "dairy_products",
+      "name": "Mozzarella Cheese",
+      "price": 7,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 4123,
+      "description": "Soft and stretchy mozzarella cheese, perfect for pizzas, salads, and pasta. Made from high-quality milk, it delivers a mild flavor and smooth texture that melts beautifully. Great for making homemade pizzas or paired with tomatoes for a classic caprese salad."
+    },
+    {
+      "id": 18,
+      "type": "fruits",
+      "name": "Grapes",
+      "price": 5,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 5867,
+      "description": "Sweet and crisp grapes that are perfect for snacking or adding to salads and desserts. These grapes are rich in antioxidants, particularly Vitamin C and K, which promote immune function and bone health. Whether enjoyed fresh or frozen, grapes make a refreshing treat."
+    },
+    {
+      "id": 19,
+      "type": "vegetables",
+      "name": "Sweet Potatoes",
+      "price": 6,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3412,
+      "description": "Rich and flavorful sweet potatoes, ideal for baking, mashing, or roasting. Loaded with fiber and beta-carotene, they are a great source of vitamins A and C. Perfect for a variety of dishes, from savory roasted sides to sweet casseroles."
+    },
+    {
+      "id": 20,
+      "type": "dairy_products",
+      "name": "Almond Milk",
+      "price": 5,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 4761,
+      "description": "Delicious, creamy almond milk made from high-quality almonds. Perfect for smoothies, cereals, or as a dairy-free alternative in coffee and recipes. This almond milk is unsweetened and packed with vitamins E and D, making it a healthy choice for lactose-intolerant or vegan diets."
+    },
+    {
+      "id": 21,
+      "type": "fruits",
+      "name": "Pears",
+      "price": 4,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3954,
+      "description": "Crisp and juicy pears with a sweet, mild flavor. Perfect for snacking, adding to salads, or baking into tarts and pies. These pears are packed with fiber and Vitamin C, promoting heart health and digestion. Freshly picked and delivered to ensure top quality."
+    },
+    {
+      "id": 22,
+      "type": "vegetables",
+      "name": "Eggplant",
+      "price": 5,
+      "rating": 4,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 2123,
+      "description": "Firm and shiny eggplants perfect for grilling, baking, or frying. This versatile vegetable is ideal for dishes like eggplant parmesan or baba ganoush. High in fiber and antioxidants, it supports digestion and heart health while offering a rich, meaty texture to vegetarian dishes."
+    },
+    {
+      "id": 23,
+      "type": "dairy_products",
+      "name": "Cream Cheese",
+      "price": 6,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 3721,
+      "description": "Smooth and rich cream cheese made from fresh dairy. Perfect for spreading on bagels, using in desserts like cheesecakes, or adding a creamy touch to savory dips. It offers a mild flavor and creamy texture that enhances both sweet and savory recipes."
+    },
+    {
+      "id": 24,
+      "type": "fruits",
+      "name": "Watermelon",
+      "price": 7,
+      "rating": 5,
+      "imageUrl": "https://cdn.pixabay.com/photo/2014/12/21/23/39/bananas-575773_960_720.png",
+      "review_counter": 6845,
+      "description": "Refreshing and hydrating watermelon, perfect for hot summer days. This juicy fruit is sweet, low in calories, and packed with antioxidants. Rich in water content, it helps with hydration and offers a boost of vitamins A and C. Perfect for snacking or adding to fruit salads."
+    }
+  ]
+}
