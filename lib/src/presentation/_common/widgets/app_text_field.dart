@@ -7,6 +7,7 @@ class AppTextField extends StatefulWidget {
     required this.icon,
     this.controller,
     this.obscureText,
+    this.validator, // Add validator parameter
   });
 
   final String hint;
@@ -16,12 +17,16 @@ class AppTextField extends StatefulWidget {
   ///  for password
   final bool? obscureText;
 
+  /// Validator for form validation
+  final String? Function(String?)? validator;
+
   @override
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
 class _AppTextFieldState extends State<AppTextField> {
   late bool? isVisible = widget.obscureText;
+
   void togglePasswordVisibility() {
     isVisible = !isVisible!;
     setState(() {});
@@ -32,7 +37,9 @@ class _AppTextFieldState extends State<AppTextField> {
     return SizedBox(
       height: 56,
       child: TextFormField(
+        controller: widget.controller,
         obscureText: isVisible ?? false,
+        validator: widget.validator, // Pass the validator to TextFormField
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 24),
           suffixIcon: isVisible != null

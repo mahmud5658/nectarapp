@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:grocery_app/src/presentation/about/about_page.dart';
+import 'package:grocery_app/src/presentation/splash_screen/splash_screen.dart';
 
 import '../infrastructure/infrastructure.dart';
 import '../presentation/_common/widgets/bottom_navBar.dart';
@@ -16,6 +17,7 @@ import '../presentation/search/search_page.dart';
 export 'package:go_router/go_router.dart';
 
 class AppRoute {
+  static const String splashPage = "/splash_screen";
   static const String startPage = "/landing_page";
   static const String loginOption = "/landing_page/login_option";
   static const String signUp = "/landing_page/sign_up";
@@ -42,7 +44,7 @@ class AppRoute {
   static GoRouter routerConfig(UserModel? user) {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: startPage,
+      initialLocation: splashPage,
       routes: [
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
@@ -56,22 +58,26 @@ class AppRoute {
             GoRoute(
               parentNavigatorKey: _shellNavigatorKey,
               path: home,
-              pageBuilder: (context, state) => const NoTransitionPage(child: HomePage()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: HomePage()),
             ),
             GoRoute(
               parentNavigatorKey: _shellNavigatorKey,
               path: saved,
-              pageBuilder: (context, state) => const NoTransitionPage(child: SavedPage()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SavedPage()),
             ),
             GoRoute(
               parentNavigatorKey: _shellNavigatorKey,
               path: cart,
-              pageBuilder: (context, state) => const NoTransitionPage(child: CartPage()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: CartPage()),
             ),
             GoRoute(
               parentNavigatorKey: _shellNavigatorKey,
               path: search,
-              pageBuilder: (context, state) => NoTransitionPage(key: state.pageKey, child: const SearchPage()),
+              pageBuilder: (context, state) => NoTransitionPage(
+                  key: state.pageKey, child: const SearchPage()),
             )
           ],
         ),
@@ -84,6 +90,12 @@ class AppRoute {
               repo: repo,
               child: ProductDetailsPage(model: item),
             );
+          },
+        ),
+        GoRoute(
+          path: splashPage,
+          builder: (context, state) {
+            return const SplashScreen();
           },
         ),
         GoRoute(
@@ -126,12 +138,14 @@ class AppRoute {
         ),
         GoRoute(
           path: payment,
-          builder: (context, state) => PaymentPage(total: state.extra as double? ?? 120),
+          builder: (context, state) =>
+              PaymentPage(total: state.extra as double? ?? 120),
           routes: [
             GoRoute(
               path: "create",
               builder: (context, state) => AddPaymentMethodPage(
-                type: state.extra as PaymentMethodEnum? ?? PaymentMethodEnum.masterCard,
+                type: state.extra as PaymentMethodEnum? ??
+                    PaymentMethodEnum.masterCard,
               ),
             )
           ],
