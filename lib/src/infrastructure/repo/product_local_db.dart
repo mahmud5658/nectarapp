@@ -47,4 +47,6 @@ class ProductLocalDb implements IProductDatabase {
       filterData: fetchItems,
     );
   }
+  
 }
+

@@ -8,7 +8,6 @@ class UserModel {
   final String name;
   final String avatar;
 
-  //use auth repo for this
   final String token;
 
   static const UserModel ui = UserModel(

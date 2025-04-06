@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/src/app/utils/input_validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../app/app_theme.dart';
 import '../../app/route_config.dart';
@@ -36,7 +37,7 @@ class _SignInPageState extends State<SignInPage> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Email is required';
-                } else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                } else if (!InputValidator.isValidEmail(value)) {
                   return 'Enter a valid email';
                 }
                 return null;
@@ -51,8 +52,8 @@ class _SignInPageState extends State<SignInPage> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Password is required';
-                } else if (value.length < 6) {
-                  return 'Password must be at least 6 characters';
+                } else if (!InputValidator.isValidPassword(value)) {
+                  return 'Enter a valid password';
                 }
                 return null;
               },
@@ -107,16 +108,28 @@ class _SignInPageState extends State<SignInPage> {
   void _login() async {
     String email = _emailController.text;
     String password = _passwordController.text;
+
     if (_formKey.currentState!.validate()) {
       try {
-        SupabaseClient _client = Supabase.instance.client;
-        final response = await _client.auth
+        final response = await Supabase.instance.client.auth
             .signInWithPassword(email: email, password: password);
-        debugPrint('Login Successfull');
-        context.pushReplacement(AppRoute.home);
+
+        if (response.user != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Login successful!')),
+          );
+          debugPrint('Successfully');
+          context.push(AppRoute.home);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Login failed! Please check your credentials.')),
+          );
+        }
       } catch (e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Login Failed')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
       }
     }
   }

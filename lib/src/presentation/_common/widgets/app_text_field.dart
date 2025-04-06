@@ -7,7 +7,7 @@ class AppTextField extends StatefulWidget {
     required this.icon,
     this.controller,
     this.obscureText,
-    this.validator, // Add validator parameter
+    this.validator,
   });
 
   final String hint;
@@ -37,9 +37,10 @@ class _AppTextFieldState extends State<AppTextField> {
     return SizedBox(
       height: 56,
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: widget.controller,
         obscureText: isVisible ?? false,
-        validator: widget.validator, // Pass the validator to TextFormField
+        validator: widget.validator,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 24),
           suffixIcon: isVisible != null
