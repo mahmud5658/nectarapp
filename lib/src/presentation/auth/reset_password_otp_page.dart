@@ -7,8 +7,6 @@ import 'package:pinput/pinput.dart';
 import '../_common/widgets/app_button.dart';
 import 'auth.dart';
 
-class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
