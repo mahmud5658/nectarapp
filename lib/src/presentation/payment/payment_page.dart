@@ -90,7 +90,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Total: ${widget.total.toStringAsFixed(1)} Tk",
+                      
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
