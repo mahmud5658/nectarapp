@@ -11,8 +11,8 @@ class UserModel {
   final String token;
 
   static const UserModel ui = UserModel(
-    name: "Abdullah",
-    avatar: "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
+    name: "",
+    avatar: "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png",
     token: "token",
   );
 }

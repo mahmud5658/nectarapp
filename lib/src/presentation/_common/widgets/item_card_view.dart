@@ -36,7 +36,7 @@ class ItemCardView extends StatelessWidget {
                   Positioned.fill(
                     child: Image.network(
                       model.imageUrl,
-                      fit: BoxFit.fitHeight, //use cover
+                      fit: BoxFit.fitHeight,
                       errorBuilder: (context, error, stackTrace) => const ImageErrorView(),
                     ),
                   ),
@@ -87,7 +87,7 @@ class ItemCardView extends StatelessWidget {
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "\$${model.price.toStringAsFixed(1)}",
+                    text: "${model.price.toStringAsFixed(1)} Tk",
                     children: [
                       TextSpan(
                         text: " per kg", //model.unit

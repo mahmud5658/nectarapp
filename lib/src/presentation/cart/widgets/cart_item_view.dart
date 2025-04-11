@@ -73,7 +73,7 @@ class ItemCartView extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text.rich(
                     TextSpan(
-                      text: "\$${model.price.toStringAsFixed(1)} ",
+                      text: "${model.price.toStringAsFixed(1)} Tk",
                       children: [
                         TextSpan(
                           text: model.unit,

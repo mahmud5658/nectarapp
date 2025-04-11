@@ -18,7 +18,7 @@ class ProductModel extends Equatable {
     this.orderCounter = 0,
     this.unit = "per kg",
   });
-  static const imagePath = "https://avatars.githubusercontent.com/u/46500228?v=4";
+  static const imagePath = "";
 
   static ProductModel get ui => ProductModel(
         id: 0,

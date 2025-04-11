@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/src/app/route_config.dart';
+import 'package:grocery_app/src/service/shared_pref.dart';
 import '../../../app/app_theme.dart';
 import '../../../infrastructure/infrastructure.dart';
 
-class UserProfileHeaderView extends StatelessWidget {
+class UserProfileHeaderView extends StatefulWidget {
   const UserProfileHeaderView({
     super.key,
     required this.model,
   });
 
   final UserModel model;
+
+  @override
+  State<UserProfileHeaderView> createState() => _UserProfileHeaderViewState();
+}
+
+class _UserProfileHeaderViewState extends State<UserProfileHeaderView> {
+  String name = "unknown";
+  @override
+  void initState() {
+    _loadUserName();
+    super.initState();
+  }
+
+  Future<void> _loadUserName() async {
+    final savedName =
+        await SharedPrefService.getUserName(); // Make sure this method exists
+    setState(() {
+      name = savedName ?? "Unknown User";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +43,7 @@ class UserProfileHeaderView extends StatelessWidget {
         Row(
           children: [
             Text(
-              "Hey ${model.name}!",
+              "Hey ${name.split(' ')[0]}!",
               style: textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -43,7 +64,7 @@ class UserProfileHeaderView extends StatelessWidget {
                 ),
                 clipBehavior: Clip.hardEdge,
                 child: Image.network(
-                  model.avatar,
+                  widget.model.avatar,
                   height: 48,
                   width: 48,
                 ),

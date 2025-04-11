@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/src/app/utils/input_validator.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:grocery_app/src/presentation/auth/auth.dart';
+import 'package:grocery_app/src/service/firebase_auth.dart';
+import 'package:grocery_app/src/service/shared_pref.dart';
 import '../../app/app_theme.dart';
 import '../../app/route_config.dart';
 import '../_common/widgets/app_text_field.dart';
-import 'auth.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -17,6 +20,8 @@ class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +77,16 @@ class _SignInPageState extends State<SignInPage> {
               widthFactor: .75,
               child: SizedBox(
                 height: 56,
-                child: ElevatedButton(
-                  onPressed: _login,
-                  child: const Text("Login"),
-                ),
+                child: _isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.red,
+                        ),
+                      )
+                    : ElevatedButton(
+                        onPressed: _login,
+                        child: const Text("Sign In"),
+                      ),
               ),
             ),
             gap,
@@ -91,7 +102,7 @@ class _SignInPageState extends State<SignInPage> {
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Text(
-                      "SignUp",
+                      "Sign Up",
                       style: TextStyle(color: AppTheme.primary),
                     ),
                   ),
@@ -106,31 +117,60 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void _login() async {
-    String email = _emailController.text;
-    String password = _passwordController.text;
+  final _authService = FirebaseAuthService();
+  if (_formKey.currentState!.validate()) {
+    setState(() {
+      _isLoading = true;
+    });
 
-    if (_formKey.currentState!.validate()) {
-      try {
-        final response = await Supabase.instance.client.auth
-            .signInWithPassword(email: email, password: password);
+    final email = _emailController.text;
+    final password = _passwordController.text;
 
-        if (response.user != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Login successful!')),
-          );
-          debugPrint('Successfully');
-          context.push(AppRoute.home);
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text('Login failed! Please check your credentials.')),
-          );
+    final error = await _authService.signIn(email, password);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (error != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.red,
+          content: Text('Sign in failed'),
+        ),
+      );
+    } else {
+      final user = FirebaseAuth.instance.currentUser;
+      
+      if (user != null) {
+        final userEmail = user.email;
+        final userName = await _fetchUserNameFromFirestore(user.uid);
+        if (userEmail != null) {
+          await SharedPrefService.setUserEmail(userEmail);
         }
-      } catch (e) {
+        if (userName != null) {
+          await SharedPrefService.setUserName(userName);
+        }
+        await SharedPrefService.setLoginStatus(true);
+
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          const SnackBar(content: Text('Signed in successfully!')),
         );
+        context.pushReplacement(AppRoute.home);
       }
     }
   }
+}
+Future<String?> _fetchUserNameFromFirestore(String uid) async {
+  try {
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    if (userDoc.exists) {
+      return userDoc.data()?['name'];
+    }
+  } catch (e) {
+    print("Error fetching user name: $e");
+  }
+  return null;
+}
+  
 }

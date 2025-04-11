@@ -64,7 +64,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Total:\$$totalPrice",
+                "Total:$totalPrice Tk",
                 style: textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

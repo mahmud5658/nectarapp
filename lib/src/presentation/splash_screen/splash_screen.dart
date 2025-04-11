@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/src/app/app_theme.dart';
 import 'package:grocery_app/src/app/route_config.dart';
 import 'package:grocery_app/src/app/utils/assets_path.dart';
+import 'package:grocery_app/src/service/shared_pref.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,8 +14,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
-    _moveToNextPage();
+  void initState(){
+    checkLogin();
     super.initState();
   }
 
@@ -37,8 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  Future<void> _moveToNextPage() async {
-    await Future.delayed(const Duration(seconds: 3));
-    context.push(AppRoute.startPage);
+  void checkLogin() async {
+    bool isLoggedIn = await SharedPrefService.getLoginStatus();
+    Future.delayed(const Duration(seconds: 4), () {
+      context.pushReplacement(isLoggedIn ? AppRoute.home : AppRoute.startPage);
+    });
   }
 }

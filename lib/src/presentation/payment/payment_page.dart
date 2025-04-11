@@ -31,8 +31,6 @@ class _PaymentPageState extends State<PaymentPage> {
 
   UserPaymentMethod selectedUserAccount = UserPaymentMethod.ui;
 
-  double total = 20;
-
   @override
   Widget build(BuildContext context) {
     return BackgroundView.two(
@@ -92,7 +90,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Total:\$${total.toStringAsFixed(1)}",
+                      "Total: ${widget.total.toStringAsFixed(1)} Tk",
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),

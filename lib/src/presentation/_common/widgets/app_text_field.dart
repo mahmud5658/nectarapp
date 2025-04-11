@@ -42,6 +42,7 @@ class _AppTextFieldState extends State<AppTextField> {
         obscureText: isVisible ?? false,
         validator: widget.validator,
         decoration: InputDecoration(
+          
           contentPadding: const EdgeInsets.symmetric(vertical: 24),
           suffixIcon: isVisible != null
               ? IconButton(

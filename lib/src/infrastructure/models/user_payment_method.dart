@@ -19,7 +19,7 @@ class UserPaymentMethod {
         type: PaymentMethodEnum.masterCard,
         cardNo: "1234-2323-1233-1233",
         exp: DateTime(2222, 8),
-        holderName: "John Ripper",
+        holderName: "Abdullah Al Mahmud",
         cvv: "000",
       );
 }

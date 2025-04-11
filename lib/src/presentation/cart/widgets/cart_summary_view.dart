@@ -30,7 +30,7 @@ class CartSummaryView extends StatelessWidget {
             style: textStyle,
           ),
           Text(
-            "\$${value.toStringAsFixed(1)}",
+            "${value.toStringAsFixed(1)} Tk",
             style: textStyle,
           )
         ],

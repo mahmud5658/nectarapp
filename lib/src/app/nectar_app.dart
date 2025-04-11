@@ -6,14 +6,14 @@ import '../infrastructure/infrastructure.dart';
 import 'app_theme.dart';
 import 'route_config.dart';
 
-class GroceryApp extends StatefulWidget {
-  const GroceryApp({super.key});
+class NectarApp extends StatefulWidget {
+  const NectarApp({super.key});
 
   @override
-  State<GroceryApp> createState() => _GroceryAppState();
+  State<NectarApp> createState() => _NectarAppState();
 }
 
-class _GroceryAppState extends State<GroceryApp> {
+class _NectarAppState extends State<NectarApp> {
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;

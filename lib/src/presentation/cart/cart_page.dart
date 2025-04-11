@@ -59,7 +59,7 @@ class _CartPageState extends State<CartPage> {
             if (totalPrice <= 0) return const SizedBox();
             return CartSummaryView(
               key: ObjectKey(snapshot),
-              deliveryPrice: 5,
+              deliveryPrice: 20,
               totalPrice: totalPrice,
             );
           },

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:grocery_app/src/presentation/about/about_page.dart';
 import 'package:grocery_app/src/presentation/splash_screen/splash_screen.dart';
-
 import '../infrastructure/infrastructure.dart';
 import '../presentation/_common/widgets/bottom_navBar.dart';
 import '../presentation/auth/auth.dart';

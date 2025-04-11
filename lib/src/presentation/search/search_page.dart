@@ -16,6 +16,8 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Center(child: LabelView(label: "Search")),
+            const SizedBox(height: 100,),
+            Text('Coming Soon...'),
           ],
         ),
       ),

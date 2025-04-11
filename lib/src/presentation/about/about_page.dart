@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/src/app/route_config.dart';
 import 'package:grocery_app/src/presentation/_common/widgets/label_view.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:grocery_app/src/service/firebase_auth.dart';
+import 'package:grocery_app/src/service/shared_pref.dart';
 import '../../app/app_theme.dart';
 import '../_common/widgets/background_view.dart';
 
@@ -14,14 +14,27 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  String name = "Unknown";
+  @override
+  void initState() {
+    _loadUserName();
+    super.initState();
+  }
+
+  Future<void> _loadUserName() async {
+    final savedName =
+        await SharedPrefService.getUserName(); // Make sure this method exists
+    setState(() {
+      name = savedName ?? "Unknown User";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return BackgroundView.two(
       child: Scaffold(
         appBar: AppBar(
-          title: const LabelView(label: "Contribution"),
+          title: const LabelView(label: "About"),
           centerTitle: true,
           leading: IconButton(
             onPressed: context.pop,
@@ -31,73 +44,21 @@ class _AboutPageState extends State<AboutPage> {
             ),
           ),
         ),
-        body: Padding(
+        body:  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 48),
-              Text(
-                "App Developer(Flutter)",
-                style: textTheme.titleMedium,
-              ),
               const SizedBox(height: 8),
-              const _BuildPersonTile(
-                name: "Abdullah Al Mahmud",
+              _BuildPersonTile(
+                name: name,
                 avatarUrl:
-                    "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
+                    "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png",
                 profileUrl:
-                    'https://www.linkedin.com/in/abdullah-al-mahmud-873181236/',
+                    '',
                 email: "",
               ),
-              const Divider(
-                height: 40,
-              ),
-              const SizedBox(height: 15),
-              const _BuildPersonTile(
-                name: "Fahim Al-Amin Auntu",
-                avatarUrl:
-                    "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
-                profileUrl:
-                    'https://www.linkedin.com/in/abdullah-al-mahmud-873181236/',
-                email: "",
-              ),
-              const Divider(
-                height: 40,
-              ),
-              const SizedBox(height: 15),
-              const _BuildPersonTile(
-                name: "Tanhatul Tasnim",
-                avatarUrl:
-                    "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
-                profileUrl:
-                    'https://www.linkedin.com/in/abdullah-al-mahmud-873181236/',
-                email: "",
-              ),
-              const Divider(
-                height: 40,
-              ),
-              const SizedBox(height: 15),
-              const _BuildPersonTile(
-                name: "Mst. Kanij Fatema",
-                avatarUrl:
-                    "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
-                profileUrl:
-                    'https://www.linkedin.com/in/abdullah-al-mahmud-873181236/',
-                email: "",
-              ),
-              const Divider(
-                height: 40,
-              ),
-              const SizedBox(height: 15),
-              const _BuildPersonTile(
-                name: "KM Tanvir Imam",
-                avatarUrl:
-                    "https://avatars.githubusercontent.com/u/104672914?s=96&v=4",
-                profileUrl:
-                    'https://www.linkedin.com/in/abdullah-al-mahmud-873181236/',
-                email: "",
-              )
             ],
           ),
         ),
@@ -121,43 +82,40 @@ class _BuildPersonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        final uri = Uri.parse(profileUrl);
-
-        try {
-          launchUrl(
-            uri,
-            mode: LaunchMode.externalApplication,
-          );
-        } catch (_) {}
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ClipOval(
-            child: Image.network(
-              avatarUrl,
-              height: 64,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ClipOval(
+          child: Image.network(
+            avatarUrl,
+            height: 64,
           ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              name,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            name,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          const IconButton(
-            onPressed: null,
-            iconSize: 32,
-            icon: Icon(
-              Icons.forward,
-              color: AppTheme.primary,
-            ),
-          )
-        ],
-      ),
+        ),
+        IconButton(
+          onPressed: () async {
+            final _authService = FirebaseAuthService();
+            try {
+              _authService.signOut();
+              await SharedPrefService.setLoginStatus(false);
+              context.pushReplacement(AppRoute.signIn);
+            } catch (e) {
+              print(e.toString());
+            }
+          },
+          iconSize: 32,
+          icon: const Icon(
+            Icons.forward,
+            color: AppTheme.primary,
+          ),
+        )
+      ],
     );
   }
 }

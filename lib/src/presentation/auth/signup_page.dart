@@ -1,11 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:grocery_app/src/app/route_config.dart';
 import 'package:grocery_app/src/app/utils/input_validator.dart';
 import 'package:grocery_app/src/presentation/auth/auth.dart';
 import 'package:grocery_app/src/presentation/auth/widgets/already_account.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:grocery_app/src/service/firebase_auth.dart';
 import '../_common/widgets/app_text_field.dart';
-import 'widgets/signin_option_view.dart';
-import 'widgets/background_auth_wrapper.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -20,6 +22,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _cPasswordController = TextEditingController();
+
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +99,15 @@ class _SignUpPageState extends State<SignUpPage> {
               widthFactor: .75,
               child: SizedBox(
                 height: 56,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _signUp();
-                  },
-                  child: const Text("Sign Up"),
-                ),
+                child: _isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ))
+                    : ElevatedButton(
+                        onPressed: _signUp,
+                        child: const Text("Sign Up"),
+                      ),
               ),
             ),
             gap,
@@ -113,24 +120,47 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> _signUp() async {
-    if(_formKey.currentState!.validate()){
-      final email = _emailController.text;
-    final password = _passwordController.text;
+    final _authService = FirebaseAuthService();
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
 
-    final response = await Supabase.instance.client.auth
-        .signUp(email: email, password: password);
+      final name = _nameController.text.trim();
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
 
-    if (response.user != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Sign up successful!')),
-      );
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const SignInPage()));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Sign Up Failed')),
-      );
-    }
+      final error = await _authService.signUp(email, password);
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.red,
+            content: Text('Sign up failed'),
+          ),
+        );
+      } else {
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .set({
+            'name': name,
+            'email': email,
+            'createdAt': Timestamp.now(),
+          });
+        }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Signed up successfully!')),
+        );
+        context.push(AppRoute.signIn);
+      }
     }
   }
 }
