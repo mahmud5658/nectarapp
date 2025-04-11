@@ -9,7 +9,7 @@ class NewPasswordPage extends StatelessWidget {
   const NewPasswordPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  
     const gap = SizedBox(height: 24);
     return AuthBackGroundWrapper(
       title: "Reset Password",
