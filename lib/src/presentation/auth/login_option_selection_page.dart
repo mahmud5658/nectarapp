@@ -65,7 +65,7 @@ class LoginOptionSelectionPage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image.asset(
                   "assets/images/bottom_ve.png",
-                  
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ],
