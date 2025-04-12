@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../app/app_theme.dart';
 import '../../../app/route_config.dart';
 import '../../_common/widgets/app_button.dart';
@@ -90,7 +89,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
           const SizedBox(height: 24),
           CheckboxListTile(
             value: isChecked,
-            contentPadding: EdgeInsets.only(),
+            contentPadding: const EdgeInsets.only(),
             controlAffinity: ListTileControlAffinity.leading,
             fillColor: WidgetStateProperty.resolveWith(
               (states) {
@@ -125,7 +124,6 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
 
 class _FromTextField extends StatelessWidget {
   const _FromTextField({
-    super.key,
     required this.label,
     required this.controller,
     this.validator,

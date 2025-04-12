@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../app/app_theme.dart';
-import '../../_common/widgets/app_button.dart';
 
 class DiscountCardView extends StatelessWidget {
   const DiscountCardView({

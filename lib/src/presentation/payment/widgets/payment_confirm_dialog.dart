@@ -3,7 +3,7 @@ import '../../../app/app_theme.dart';
 import '../../_common/widgets/app_button.dart';
 
 class PaymentConfirmDialog extends StatelessWidget {
-  const PaymentConfirmDialog._({super.key});
+  const PaymentConfirmDialog._();
 
   static Future<void> show(BuildContext context) async {
     await showDialog(
